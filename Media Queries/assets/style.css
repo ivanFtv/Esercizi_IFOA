@@ -1,0 +1,51 @@
+/* CSS BASE APPLICATO SEMPRE OVE NON SUBENTRINO MEDIA QUERIES */
+.container {
+  background-color: blueviolet;
+  width: 300px;
+}
+
+.divmain {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* MEDIA QUERY MOBILE DA 320PX IN POI*/
+@media screen and (min-width: 320px) {
+    .container {
+        background-color: blue;
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    .divmain {
+        flex-direction: row;
+    }
+
+    #parag {
+        color: red;
+        font-size: 24px;
+    }
+}
+
+/* MEDIA QUERY MEDIUM VIEWPORT DA 800PX IN POI*/
+@media screen and (min-width: 800px) {
+    .container {
+        background-color: green;
+        width: 300px;
+    }
+
+    #parag {
+        color: blue;
+        font-size: 18px;
+    }
+}
+
+/* MEDIA QUERY PRINT */
+@media print and (min-width: 1200px) {
+    .container {
+        width: 100%;
+    }
+
+}
