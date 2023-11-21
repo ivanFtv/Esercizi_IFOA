@@ -1,0 +1,369 @@
+/* IMPOSTAZIONI GENERALI */
+html {font-size: 62.5%;}
+body { 
+    font-family: Poppins, 'Helvetica Neue', sans-serif;
+    font-size: 1.4rem;
+    line-height: 1.5;
+    padding: 15px;
+    background-image: url('../img/sfondo.png');
+    background-position: center center;
+}
+* {box-sizing: border-box;}
+hr {display: none;} /* rimuove l'elemento */
+
+/* HEADER */
+header {
+    background: rgb(0,160,198);
+    background: linear-gradient(180deg, rgba(0,160,198,1) 0%, rgba(3,109,134,1) 68%);
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: white;
+    box-shadow: 0 3px 3px #444;
+    margin-bottom: 1.5em;
+    padding: 2em 1.5em;
+}
+
+header p {
+    font-size: 1.5em;
+}
+
+header div img {
+    margin-bottom: 20px;
+}
+header nav ul {
+    margin: 0;
+}
+header nav li {
+    list-style: none;
+    display: inline;
+    padding: 0 0.8em;
+}
+header nav li a {
+    color: white;
+    text-decoration: none;
+}
+header nav li a:hover {
+    color: red;
+}
+header nav li a::before {
+    content: "\22c6\0020";
+}
+
+/* MAIN */
+main {
+    background-color: #fff;
+    box-shadow: 0 3px 3px #444;
+    padding: 2em 1em;
+    margin-bottom:1.5em ;
+}
+section { 
+    background-color: #e3e3e3;
+    padding: 1em;
+    margin-bottom: 2em;
+}
+section h2 {
+    text-align: center;
+    color: #333;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 1em;
+}
+
+/* ELEMENTI NEL MAIN - ARTICLE */
+h1 {
+    font-size: 2.6rem;
+    font-weight: bold;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.7em;
+}
+p, address, ul, ol, dl, blockquote {
+    margin-bottom: 1.2em;
+}
+h1 + p {
+    color: #a0a0a0;
+}
+ul, ol {
+    margin-left: 2em;
+}
+a {
+    color: #00A0C6;
+    font-weight: bold;
+}
+strong {
+    color: #a02571;
+    font-weight: bold;
+}
+code {
+    background-color: #e3e3e3;
+    border: 1px solid #969494;
+    border-radius: 5px;
+}
+iframe {
+    width: 100%;
+    height: auto;
+    margin-bottom: 2em;
+    border-radius: 20px;
+}
+
+/* TABELLE */
+table {
+    margin-bottom: 2em;
+}
+caption {
+    font-weight: bold;
+    font-style: italic;
+}
+thead tr {
+    background-color: #3f6bca;
+    color: #ffffff;
+}
+th, td {
+    padding: 12px 15px;
+    vertical-align: bottom;
+    text-align: center;
+}
+tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+tbody tr:last-of-type {
+    border-bottom: 2px solid #3f6bca;
+}
+
+/* FORM */
+input {
+    padding: 5px;
+    border: 0;
+}
+
+button {
+    padding: 5px 10px;
+    background-color: #3f6bca;
+    border: 0;
+    color: white;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.subscription {
+    background-color: #cccccc;
+}
+
+.subscription h2 {
+    font-size: 1.2em;
+    padding: 5px;
+    background-color:#999999
+}
+
+
+/* ELEMENTI NELL' ASIDE */
+aside h2 {
+    text-align: center;
+    color: #333;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 1em;
+}
+aside div {
+    background-color: #d6d5d5;
+    margin-bottom: 1em;
+    padding: 1em;
+}
+aside div p:last-child {
+    margin-bottom: 0;
+    font-size: 0.8em;
+    text-align: right;
+}
+
+
+/* FOOTER */
+footer {
+    background: rgb(53,53,53);
+    background: linear-gradient(0deg, rgba(53,53,53,1) 0%, rgba(5,85,103,1) 68%);
+    box-shadow: 0 3px 3px #444;
+    color: #f0f0f0;
+    padding: 1em;
+    text-align: center;
+    font-size: 1.2rem;
+}
+footer a {
+    color: fuchsia;
+}
+
+
+/* MEDIA QUERIES */
+
+
+/* SE NON VOLESSI MODIFICARE IL CSS DI BASE POSSO IMPOSTARE QUESTA MEDIA QUERY CHE LAVORA DA O A 575PX */
+@media screen and (max-width: 575px) {
+    p,
+    ul,
+    ol {
+        font-size: 1.4rem;
+    }
+
+    h1 {
+        font-size: 3.5rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+        font-weight: 700;
+    }
+}
+
+/* QUERIES PER SCHERMI DA 576PX IN SU */
+@media screen and (min-width: 576px) {
+
+    h1 {
+        font-size: 3rem;
+    }
+  
+    p,
+    ul,
+    ol {
+        font-size: 1.2rem;
+    }
+
+    header nav li {
+        font-size: 1.25em;
+    }
+  
+    h2 {
+        font-size: 1.4rem;
+        font-weight: 700;
+    }
+
+    input {
+        width: 70%;
+        padding: 15px;
+      }
+
+    button {
+        padding: 15px 30px;
+    }
+
+    table {
+        margin: 0 auto 2em;
+      }
+
+}
+
+
+
+/* QUERIES PER SCHERMI DA 768PX IN SU */
+@media screen and (min-width: 768px) {
+
+    h1 {
+        font-size: 3.6rem;
+      }
+
+    table {
+        width: 70%;
+        margin-block-start: 5rem;
+        margin-block-end: 6rem;
+    }
+}
+  
+  /* MEDIA QUERIES PER SCHERMI DA 1200PX IN SU */
+@media screen and (min-width: 1200px) {
+
+    body {
+        line-height: 2;
+    }
+
+    header {
+        padding-top: 20px;
+        padding-bottom: 0px;
+    }
+
+    header,
+    main,
+    footer {
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    section {
+        border-radius: 20px;
+    }
+
+    header {
+        text-align: left;
+    }
+
+    header .brand,
+    header nav,
+    header .brand p {
+        display: inline-block;
+    }
+  
+    header .brand {
+        width: 75%;
+    }
+
+    header .brand img {
+        vertical-align: middle;
+        margin-right: 20px;
+    }
+
+    iframe,
+    section {
+        display: inline-block;
+        width: 50%;
+        margin-inline: -2px;
+        vertical-align: middle;
+    }
+  
+    iframe {
+        height: 267px;
+    }
+
+    aside div {
+        display: inline-block;
+        width: 33.333%;
+        margin-inline: -2px;
+    }
+    
+  }
+
+
+
+  /* MEDIA QUERY PER LA STAMPA */
+  @media print {
+    body {
+        font-size: 24px;
+        padding: 0;
+        background-image: none;
+    }
+
+    main {
+        box-shadow: none;
+        margin: 0;
+    }
+
+    thead tr,
+    tbody tr {
+        border-bottom: 1px solid #666;
+    }
+  
+    header,
+    article section,
+    iframe,
+    aside,
+    footer,
+    .social,
+    .toTop {
+        display: none;
+    }
+    
+  }
+
