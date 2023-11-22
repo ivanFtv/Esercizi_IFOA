@@ -1,0 +1,25 @@
+.container {
+    height: 250px; 
+    margin: 0 auto;
+    gap: 10px;
+    display: flex;
+    background-color: aquamarine;
+}
+
+.children {
+    /* flex-grow: 1; */
+    flex-basis: 60%;
+    border: 1px solid black;
+    margin: 5px;
+    background-color: blueviolet;
+    flex-grow: 2;
+}
+
+.children2 {
+    /* flex-grow: 2; */
+    align-self: flex-end;
+    border: 1px solid black;
+    margin: 5px;
+    background-color: blueviolet;
+    flex-grow: 1;
+}
