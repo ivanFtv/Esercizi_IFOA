@@ -1,0 +1,202 @@
+
+/* FLOAT */
+
+.parent {
+  width: 90%;
+  margin: 0 auto;
+  height: 200vh;
+}
+
+/* APPLICO IL FLOAT LEFT CHE MI SPOSTERA L'ELEMENTO TUTTO A SX RISPETTO AL PARENT O FINESTRA SE NON HA PARENT */
+.parent .container1 {
+  width: 100px;
+  height: 100px;
+  background-color: aqua;
+  float:left;
+}
+
+/* APPLICO IL FLOAT RIGHT CHE MI SPOSTERA L'ELEMENTO TUTTO A DX RISPETTO AL PARENT O FINESTRA SE NON HA PARENT */
+.parent .container2 {
+  width: 100px;
+  height: 100px;
+  background-color: rgb(79, 148, 22);
+  float:right;
+}
+
+/* QUESTO DIV VOGLIO INVECE CHE RITORNI NEL FLUSSO NORMALE */
+.parent .container3 {
+  width: 100px;
+  height: 100px;
+  background-color: rgb(255, 0, 242);
+  /* quindi vado a pulire i float, in questo caso both perchè ho sia un left che un right */
+  /* clear: both; potrei usare solo "clear: left" o "clear:right" per pulire i rispettivi float */
+}
+
+/* IN CASO APPLICO UN FLOAT AD UN ELEMENTO CONTENUTO IN UN CONTENITORE NON FLOTTANTE E L'ELEMENTO CHE HA IL FLOAT è PIU GRANDE DEL PARENT
+E' MOLTO PROBABILE IL FIGLIO FUORIESCA DAL PARENT CON IL FAMOSO BUG DEL COLLASSO DEL DIV */
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+/* elemento flottante */
+img .flottante {
+  float:left;
+  padding: 10px;
+}
+
+.container p {
+  font-size: 2.4rem;
+}
+
+/* per fizare il problema applico quindi la classe clearfix al PARENT*/
+.container img .flottante::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+
+
+/* POSITIONING STATIC/RELATIVE/ABSOLUTE/STICKY/FIXED */
+
+/* STATIC => POSIZIONE NORMALE, VALORE DI DEFAULT DEGLI ELEMENTI */
+.container {
+  width: 95%;
+  height: 110px;
+  background-color: rgb(114, 250, 177);
+  position: static;
+  margin: 20px;
+  border: solid 2px black;
+}
+
+/* RELATIVE => MANTIENE IL SUO COMPORTAMENTO NORMALE FINCHE NON ASSEGNO VALORI TIPO TOP/BOTTOM/LEFT/RIGHT */
+/* SE ASSEGNO VALORI DI POSIZIONAMENTO SI SPOSTERA SULLA BASE DEI VALORI ASSEGNATI DALLA SUA POSIZIONE ORIGINALE  */
+.container {
+  width: 95%;
+  height: 110px;
+  background-color: rgb(114, 250, 177);
+  border: solid 2px black;
+  position: relative;
+  top: 10px;
+  left: 10px;
+}
+
+
+/* ABSOLUTE => SI POSIZIONA RISPETTO LA FINESTRA DEL BROWSER SULLA BASE DEI VAORI ASSEGNATI A TOP/BOTTOM/LEFT/RIGHT
+POSSO CAMBIARE IL CONTEXT DELL'ABSOLUTE, OVVERO LA BASE DA CUI PARTE IL POSIZIONAMENTO ATTRIBUENDO POSITION: RELATIVE A UN ELEMENTO PADRE
+DA QUEL MOMENTO ABSOLUTE PRENDERA COME RIFERIMENTO L'ELEMENTO PADRE PER POSIZIONARSI E NON PIU LA FINESTRA DEL BROWSER */
+.padreDelContainer {
+  position: relative;
+}
+
+.container {
+  width: 95%;
+  height: 110px;
+  background-color: rgb(114, 250, 177);
+  border: solid 2px black;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+
+/* FIXED => POSIZIONE ASSOLUTA RISPETTO LA FINESTRA DEL BROWSER O VIEWPORT, NON IMPORTA QUELLO CHE ACCADE, L'ELEMENTO RIMANE
+LI DOVE IO HO IMPOSTATO */
+.container {
+  width: 95%;
+  height: 110px;
+  background-color: rgb(114, 250, 177);
+  border: solid 2px black;
+  position: fixed;
+  top: 0px;
+}
+
+/* STICKY => UN MIX TRA RELATIVE E FIXED, L'ELEMENTO SI COMPORTA RELATIVE FINTANTO SI TROVI NEL VIEWPORT, NELLA FINESTRA DEL BROWSER
+QUANDO RAGGIUNGE L'ESTREMITA CAMBIA IN FIXED E SI POSIZIONA DOVE ABBIAMO DEFINITO: MOLTO USATO PER LE HEADER E BOTTONI CALLTOACTION */
+.header {
+  width: 95%;
+  height: 110px;
+  background-color: rgb(114, 250, 177);
+  border: solid 2px black;
+  position: sticky;
+  top: 0px;
+}
+
+
+
+
+
+
+/* ESEMPIO STRUTTURA */
+body {
+  font-size: 20px;
+}
+
+
+.container {
+  width: 900px;
+  background-color: blanchedalmond;
+  margin: 0 auto;
+  padding: 50px
+}
+
+header {
+  background-color: blueviolet;
+  color: white;
+  padding: 10px 20px 10px 20px;
+  position: sticky;
+  top: 1px;
+}
+
+header div {
+  display: inline;
+}
+
+.brand {
+  width: 75%;
+}
+
+header nav, ul {
+  display: inline;
+}
+
+header nav ul li {
+  list-style: none;
+  display: inline;
+}
+
+main {
+  margin-top: 100px;
+  height: 150vh;
+}
+
+.articolo {
+  border: 1px solid gray;
+  width: 350px;
+  float: left;
+  margin: 0 10px;
+}
+
+footer {
+  background-color: blueviolet;
+  color: white;
+  padding: 10px 20px 10px 20px;
+  position: sticky;
+  bottom: 1px;
+}
+
+.img {
+  background-color: brown;
+  width: 150px;
+  height: 100px;
+  float: left;
+}
+
+.corpo {
+  clear: left;
+  padding-top: 30px;
+}
+
+
