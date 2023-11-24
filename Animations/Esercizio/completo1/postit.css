@@ -1,0 +1,103 @@
+body {
+  font: 2rem "Indie Flower";
+  overflow-x: hidden;
+}
+
+section {
+  background-color: #666;
+  display: flex;
+  align-items: flex-start;
+  align-content: flex-start;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  min-height: 100vh;
+}
+
+section h2 {
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+section div {
+  background-color: rgb(255, 255, 204);
+  background-image: linear-gradient(rgb(255, 255, 204) 0%, rgb(231, 231, 174) 75%, rgb(205 205 143) 93%);
+  padding: 2em;
+  margin: 0.7em;
+  box-shadow: 5px 5px 7px rgba(33, 33, 33, 0.7);
+  transform: rotate(-4deg);
+  transition: transform 0.1s ease-in-out, box-shadow 0.2s ease-out;
+  animation: slap-in 1s backwards;
+}
+
+section div:nth-child(even) {
+  background-color: rgb(204, 255, 204);
+  background-image: linear-gradient(rgb(204, 255, 204) 0%, rgb(184, 219, 184) 75%, rgb(146 180 146) 93%);
+  transform: rotate(4deg);
+}
+
+section div:nth-child(1n) {
+  animation-delay: 0.5s;
+}
+
+section div:nth-child(2n) {
+  animation-delay: 0.4s;
+}
+
+section div:nth-child(3n) {
+  background-color: rgb(204, 204, 255);
+  background-image: linear-gradient(rgb(204, 204, 255) 0%, rgb(176, 176, 204) 75%, rgb(147 147 186) 93%);
+  /* transform: rotate(10deg); */
+  animation-delay: 0.3s;
+}
+
+section div:nth-child(4n) {
+  animation-delay: 0.9s;
+}
+
+section div:nth-child(5n) {
+  animation-delay: 0.8s;
+}
+
+section div:nth-child(6n) {
+  animation-delay: 0.7s;
+}
+
+section div:nth-child(7n) {
+  animation-delay: 0.6s;
+}
+
+section div:nth-child(8n) {
+  animation-delay: 1s;
+}
+
+section div:hover {
+  transform: scale(1.15);
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  cursor: pointer;
+}
+
+@keyframes slap-in {
+  0% {
+    opacity: 0;
+    transform: scale(10);
+  }
+  50% {
+    opacity: 0;
+    transform: scale(10);
+  }
+
+  55% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+
+  65% {
+    opacity: 1;
+    transform: scale(0.9);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

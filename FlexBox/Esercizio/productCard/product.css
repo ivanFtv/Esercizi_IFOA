@@ -30,7 +30,7 @@ body {
   align-items: center;
 
   padding: 10px;
-  box-sizing: border-box;
+  box-sizing: border-box; /* EVENTUALI MARGINI VENGONO SOTTRATTI DAL CONTENUTO */
 }
 
 .prod__card div {
@@ -43,6 +43,11 @@ body {
   align-items: center;
 }
 
+.prod__data .prod__price {
+  flex-basis: 33%;
+  text-align: center;
+}
+
 .prod__data .prod__name {
   flex-basis: 66%;
   text-align: center;
@@ -50,11 +55,6 @@ body {
 
 .prod__name .main {
   font-weight: bold;
-}
-
-.prod__data .prod__price {
-  flex-basis: 33%;
-  text-align: center;
 }
 
 .prod__info .prod__cta {
