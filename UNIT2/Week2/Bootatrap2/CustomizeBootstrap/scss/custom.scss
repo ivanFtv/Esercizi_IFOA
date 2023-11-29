@@ -1,0 +1,17 @@
+
+$primary: red;
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+$body-bg: #000;
+$bodyy-color: #111;
+
+
+body {
+  background-color: $body-bg;
+}
+
+.navbar .navbar-brand {
+  color: #47A0FF;
+  font-size: 25px;
+}
