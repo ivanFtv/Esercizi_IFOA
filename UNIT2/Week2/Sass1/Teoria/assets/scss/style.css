@@ -125,7 +125,7 @@ h6 {
 .button-primary {
   background-color: #d42222;
   color: #fff;
-  padding: 20px;
+  padding: 25px;
 }
 
 .bg-secondary {
@@ -140,7 +140,7 @@ h6 {
 .button-secondary {
   background-color: #22d431;
   color: #fff;
-  padding: 20px;
+  padding: 25px;
 }
 
 .bg-tertiary {
@@ -155,7 +155,7 @@ h6 {
 .button-tertiary {
   background-color: #224bd4;
   color: #fff;
-  padding: 20px;
+  padding: 25px;
 }
 
 @media screen and (max-width: 567px) {
