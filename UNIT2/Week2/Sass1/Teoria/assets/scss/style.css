@@ -125,7 +125,7 @@ h6 {
 .button-primary {
   background-color: #d42222;
   color: #fff;
-  padding: 25px;
+  padding: 20px;
 }
 
 .bg-secondary {
@@ -140,7 +140,7 @@ h6 {
 .button-secondary {
   background-color: #22d431;
   color: #fff;
-  padding: 25px;
+  padding: 20px;
 }
 
 .bg-tertiary {
@@ -155,27 +155,5 @@ h6 {
 .button-tertiary {
   background-color: #224bd4;
   color: #fff;
-  padding: 25px;
-}
-
-@media screen and (max-width: 567px) {
-  .mediaQ {
-    color: #fff;
-    background-color: #000;
-    padding: 20px;
-  }
-}
-@media screen and (max-width: 768px) {
-  .mediaQ {
-    color: #fff;
-    background-color: #000;
-    padding: 30px;
-  }
-}
-@media screen and (max-width: 992px) {
-  .mediaQ {
-    color: #fff;
-    background-color: #000;
-    padding: 40px;
-  }
+  padding: 20px;
 }/*# sourceMappingURL=style.css.map */

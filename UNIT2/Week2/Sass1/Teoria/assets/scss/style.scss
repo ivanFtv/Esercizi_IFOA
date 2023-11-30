@@ -208,47 +208,6 @@ $colori: (
     }
 }
 
-@mixin media ($pixels) {
-   @if $pixels == '567px' {
-       @media screen and (max-width: 567px) {
-           @content;
-       }
-   }
-    @else if $pixels == '768px' {
-        @media screen and (max-width: 768px) {
-             @content;
-        }
-   }
-    @else if $pixels == '992px' {
-         @media screen and (max-width: 992px) {
-              @content;
-         }
-    }
-}
-
-.mediaQ {
-    @include media('567px') {
-        color: #fff;
-        background-color: #000;
-        padding: 20px;
-    }
-    @include media('768px') {
-        color: #fff;
-        background-color: #000;
-        padding: 30px;
-    }
-    @include media('992px') {
-        color: #fff;
-        background-color: #000;
-        padding: 40px;
-    }
-    @include media('1200px') {
-        color: #fff;
-        background-color: #000;
-        padding: 50px;
-    }
-}
-
 
 
 
