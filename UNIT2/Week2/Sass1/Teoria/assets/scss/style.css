@@ -1,0 +1,181 @@
+.nav {
+  background-color: #123456;
+  color: #fff;
+}
+
+.bg {
+  background-color: #123456;
+  color: #fff;
+}
+
+.padding-plus {
+  padding: 25px;
+}
+
+.esempio {
+  background-color: #123456;
+  color: #fff;
+  padding: 30px;
+  font-size: 20px;
+}
+.esempio h1 {
+  font-size: 30px;
+}
+.esempio h1 .titolo {
+  color: #fff;
+}
+
+.esempio2, .esempio2-titolo {
+  background-color: #123456;
+  color: #fff;
+  padding: 30px;
+  font-size: 20px;
+}
+.esempio2-titolo {
+  border: 1px solid blue;
+}
+
+.titolo:hover {
+  color: #123456;
+}
+.titolo:after {
+  content: "ciao";
+}
+.titolo p {
+  color: #123456;
+}
+
+h5 {
+  color: #123456;
+  background-color: black;
+  padding: 20px;
+}
+
+h6 {
+  color: #123456;
+  background-color: black;
+  padding: 20px;
+  padding: 25px;
+}
+
+.button {
+  color: #fff;
+  background-color: #000;
+}
+
+.buttonRed {
+  color: #d42222;
+  background-color: #d42222;
+  padding-top: 20px;
+}
+
+.buttonBlue {
+  color: #224bd4;
+  background-color: #224bd4;
+  padding: 40px;
+}
+
+.backgroundImage {
+  background-image: url("https://picsum.photos/200/300");
+}
+
+.backgroundColor {
+  background-color: #d42222;
+}
+
+.backgroundPosition {
+  background-position: 100px;
+}
+
+.classeBase, .classeCheEredita {
+  color: #fff;
+  background-color: #000;
+  padding: 20px;
+}
+
+.classeCheEredita {
+  padding: 30px;
+}
+
+.icon-facebook {
+  background-image: url("../icons/facebook.png");
+}
+
+.icon-twitter {
+  background-image: url("../icons/twitter.png");
+}
+
+.icon-pinterest {
+  background-image: url("../icons/pinterest.png");
+}
+
+.icon-youtube {
+  background-image: url("../icons/youtube.png");
+}
+
+.bg-primary {
+  background-color: #d42222;
+  color: #fff;
+}
+
+.text-primary {
+  color: #d42222;
+}
+
+.button-primary {
+  background-color: #d42222;
+  color: #fff;
+  padding: 20px;
+}
+
+.bg-secondary {
+  background-color: #22d431;
+  color: #fff;
+}
+
+.text-secondary {
+  color: #22d431;
+}
+
+.button-secondary {
+  background-color: #22d431;
+  color: #fff;
+  padding: 20px;
+}
+
+.bg-tertiary {
+  background-color: #224bd4;
+  color: #fff;
+}
+
+.text-tertiary {
+  color: #224bd4;
+}
+
+.button-tertiary {
+  background-color: #224bd4;
+  color: #fff;
+  padding: 20px;
+}
+
+@media screen and (max-width: 567px) {
+  .mediaQ {
+    color: #fff;
+    background-color: #000;
+    padding: 20px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .mediaQ {
+    color: #fff;
+    background-color: #000;
+    padding: 30px;
+  }
+}
+@media screen and (max-width: 992px) {
+  .mediaQ {
+    color: #fff;
+    background-color: #000;
+    padding: 40px;
+  }
+}/*# sourceMappingURL=style.css.map */

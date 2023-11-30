@@ -1,0 +1,257 @@
+//QUESTA FUNZIONE AGGIUNGE 5PX A QUALUNQUE VALORE GLI PASSI E RESTITUISCE IL VALORE OTTENUTO
+@function aggiungi5PxaTutto($valore) {
+    @return $valore + 5px;
+}
+
+// --------------------------------------------
+@import 'variables';
+//L'IMPORT SOPRA EQUIVALE A COPIA INCOLLARE IL CODICE QUI SOTTO COMMENTATO PERCHE QUESTO CODICE 
+//E' CONTENUTO NEL FILE VARIABLES.SCSS CHE HO IMPORTATO SOPRA
+// ----------------------------------
+// $pippo: #555;
+// $primary-text-color: #fff;
+
+// $main-padding: 20px;
+// $padding-plus: $main-padding + 10px;
+// ------------------------------------
+
+//NELLE CLASSI QUI SOTTO VADO RIUTILIZZARE LE MIE VARIABILI DEFINITE IN VARIABLES.SCSS CHE HO IMPORTATO SOPRA
+//QUESTO MI PERMETTE DI CAMBIARE IL COLORE DI TUTTE LE CLASSI CHE HANNO AD ES. COME COLORE DI SFONDO $pippo CAMBIANDOLO SOLO IN UNA VARIABILE
+//E DI NON RISCRIVERE IL COLORE IN TUTTE LE CLASSI
+.nav {
+    background-color: $pippo;
+    color: $primary-text-color;
+}
+
+.bg {
+    background-color: $pippo;
+    color: $primary-text-color;
+}
+
+//QUI UTILIZZO LA FUNZIONE DICHIARATA SOPRA PER CALCOLARE IL PADDING (20px + 5 = 25px)
+.padding-plus {
+    padding: aggiungi5PxaTutto(20px);
+}
+
+//ESEMPIO DI NESTING
+.esempio {
+    background-color: $pippo;
+    color: $primary-text-color;
+    padding: $padding-plus;
+    font-size: 20px;
+    h1 {
+        font-size: 30px;
+        .titolo {
+            color: $primary-text-color;
+        }
+    }
+}
+
+//ESEMPIO DI NESTING CON &
+.esempio2 {
+    background-color: $pippo;
+    color: $primary-text-color;
+    padding: $padding-plus;
+    font-size: 20px;
+    &-titolo { //IL RISULTATO SARA UNA CLASSE .esempio2-titolo CHE EREDITA TUTTO DA .esempio2 E IN PIU IL COMPILATORE CREERA UNA CLASSE AGGIUNTIVA .esempio2-titolo PER ASSEGNARE IL BORDO BLU
+        @extend .esempio2;
+        border: 1px solid blue;
+    }
+}
+
+//ESEMPIO DI ASSEGNAZIONE DI PSEUDOCLASSI CON SINTASSI SCSS
+.titolo {
+    &:hover {
+        color: $pippo;
+    }
+    &:after {
+        content: 'ciao';}
+    p {
+        color: $pippo;
+    }
+}
+
+//UTILIZZO DEL MIXIN CON AGGIUNTA DI ALTRE PROPRIETA PER LA CLASSE CHE STO DEFINENDO
+@mixin mioMixin {
+    color: $pippo; //QUI UTILIZZO UNA VARIABILE DEFINITA IN VARIABLES.SCSS CHE HO IMPORTATO SOPRA
+    background-color: black;
+    padding: 20px;
+}
+
+//UTILIZZO DEI MIXIN PURO
+h5 {
+    @include mioMixin;
+}
+
+//SOVRASCRITTURA DI UN ATTRIBUTO DEL MIXIN, ASSEGNANDO DOPO UNA PROPRIETA CHE SOVRASCRIVE QUELLA DEL MIXIN
+//SE LA DOVESSI ASSEGNARE PRIMA IL MIXIN SOVRASCRIVEREBBE LA MIA VARIABILE PERCHE IL MIXIN NON E INTELLIGENTE 
+//MA COPIA E INCOLLA SOLAMENTE DEL CODICE
+h6 {
+    @include mioMixin;
+    padding: 25px;
+}
+
+
+
+//MIXIN CON UTILIZZO DI PARAMETRI SEMPLICE, QUANDO LO ANDRO A RICHIAMARE PASSERO I PARAMETRI CHE MI SERVONO
+@mixin conParametriSimple($colorText, $colorBackground) {
+    color: $colorText;
+    background-color: $colorBackground;
+}
+
+//MIXIN CON UTILIZZO DI PARAMETRI AVANZATO, HO RESO IL MIXIN COMPLETAMENTE DINAMICO, POTENDO ANCHE DECIDERE 
+//PARZIALMENTE CHE PROPRIETA GENERARE INFATTI paddingDirection GRAZIE ALLA PROPRIETA DI INTERPOLAZIONE 
+//DECIDERA IN CHE DIREZIONE APPLICARE IL PADDING
+@mixin conParametriAdvanced($colorText, $colorBackground, $padding, $paddingDirection) {
+    color: $colorText;
+    background-color: $colorBackground;
+    padding-#{$paddingDirection}: $padding;
+}
+
+//MIXIN CON PARAMETRI E INSERIMENTO DI CONDIZIONALE IF/ELSE E NULL COME DEFAUTL VALUE
+@mixin conParametriAdvancedCondizionale($colorText, $colorBackground, $padding, $paddingDirection: null) {
+    color: $colorText;
+    background-color: $colorBackground;
+    @if $paddingDirection {
+        padding-#{$paddingDirection}: $padding;
+    }
+    @else {
+        padding: $padding;
+    }
+}
+
+//UTILIZZO MIXIN CON PARAMETRI SEMPLICE
+.button {
+    @include conParametriSimple(#fff, #000);
+}
+
+//UTILIZZO MIXIN CON PARAMETRI AVANZATO
+.buttonRed {
+    @include conParametriAdvanced(#d42222, #d42222, 20px, top);
+}
+
+//UTILIZZO MIXIN CON PARAMETRI AVANZATO E CONDIZIONALE IF/ELSE
+.buttonBlue {
+    @include conParametriAdvancedCondizionale(#224bd4, #224bd4, 40px); 
+    //NON STO PASSANDO IL PARAMETRO $paddingDirection QUINDI VERRA APPLICATO IL VALORE DI DEFAULT CHE E NULL
+    //DI CONSEGUENZA DATO IL CICLO IF/ELSE NEL MIXIN VERRA APPLICATO IL PADDING SENZA DIREZIONE, OVVERO SU TUTTI I LATI
+}
+
+//ALTRO UTILIZZO DEL MIXING PER CREARE DELLE PROPRIETA BACKGROUND-COLOR O BACKGROUND-IMAGE O BACKGROUND-POSITION
+//IN BASE AL PARAMETRO CHE GLI PASSO AL MIXIN
+@mixin backgroundType($type, $value) {
+    background-#{$type}: $value;
+}
+
+//UTILIZZO DEL MIXING PER IL BACKGROUND
+.backgroundImage {
+    @include backgroundType(image, url('https://picsum.photos/200/300'));
+}
+
+.backgroundColor {
+    @include backgroundType(color, #d42222);
+}
+.backgroundPosition {
+    @include backgroundType(position, 100px);
+}
+
+//UTILIZZO DI @EXTEND PER EREDITARE LE PROPRIETA DI UNA CLASSE
+//AL CONTRARIO DI MIXIN NON DOBBIAMO DEFINIRE DEL CODICE DEDICATO MA BASTA RICHIAMARE LA CLASSE CHE VOGLIAMO EREDITARE
+.classeBase {
+    color: #fff;
+    background-color: #000;
+    padding: 20px;
+}
+
+.classeCheEredita {
+    @extend .classeBase;
+    padding: 30px;
+    //USANDO @EXTEND POSSO SOVRASCRIVERE LE PROPRIETA DELLA CLASSE CHE EREDITO INTELLIGENTEMENTE
+    //AL CONTRARIO DI MIXIN IL COMPILATORE CAPIRA SE UN PARAMETRO E GIA DEFINITO E LO MODIFICHERA
+}
+
+
+
+//UTILIZZO DEI CICLI ESEMPIO UTILIZZO EACH PER CREARE DELLE CLASSI CON I NOMI DEI SOCIAL NETWORK
+//DEFINISCO UNA VARIABILE CHE CONTIENE UN ARRAY DI STRINGHE CORRISPONDENTI AI NOMI DELLE IMMAGINI/ICONE
+$icons: facebook, twitter, pinterest, youtube;
+
+//VADO A CICLARE LA MIA VARIABILE $icons E PER OGNI ELEMENTO CREO UNA CLASSE CON IL NOME DELL'ELEMENTO
+//E ASSEGNO COME SFONDO L'IMMAGINE CHE HA COME NOME IL NOME DELL'ELEMENTO
+@each $icon in $icons {
+    .icon-#{$icon} {
+        background-image: url('../icons/#{$icon}.png');
+    }
+}
+
+//QUI DOPO AVER DEFINITO UNA VARIABILE MAPPA CHE CONTIENE UNA LISTA DI COLORI E I LORO NOMI
+//UTILIZZO UN EACH PER CICLARE LA MIA VARIABILE MAPPA E CREARE DELLE CLASSI PER BACKGROUND/TESTI E BOTTONI CON I NOMI DEI COLORI
+//ESEMPIO BOOTSTRAP
+$colori: (
+    primary: #d42222,
+    secondary: #22d431,
+    tertiary: #224bd4
+);
+
+@each $key, $value in $colori {
+    .bg-#{$key} {
+        background-color: $value;
+        color: #fff;
+    }
+    .text-#{$key} {
+        color: $value;
+    }
+    .button-#{$key} {
+        background-color: $value;
+        color: #fff;
+        padding: 20px
+    }
+}
+
+@mixin media ($pixels) {
+   @if $pixels == '567px' {
+       @media screen and (max-width: 567px) {
+           @content;
+       }
+   }
+    @else if $pixels == '768px' {
+        @media screen and (max-width: 768px) {
+             @content;
+        }
+   }
+    @else if $pixels == '992px' {
+         @media screen and (max-width: 992px) {
+              @content;
+         }
+    }
+}
+
+.mediaQ {
+    @include media('567px') {
+        color: #fff;
+        background-color: #000;
+        padding: 20px;
+    }
+    @include media('768px') {
+        color: #fff;
+        background-color: #000;
+        padding: 30px;
+    }
+    @include media('992px') {
+        color: #fff;
+        background-color: #000;
+        padding: 40px;
+    }
+    @include media('1200px') {
+        color: #fff;
+        background-color: #000;
+        padding: 50px;
+    }
+}
+
+
+
+
+
+
+
