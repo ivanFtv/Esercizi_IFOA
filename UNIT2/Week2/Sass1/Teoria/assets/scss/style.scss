@@ -41,9 +41,6 @@
     font-size: 20px;
     h1 {
         font-size: 30px;
-        .titolo {
-            color: $primary-text-color;
-        }
     }
 }
 
@@ -58,6 +55,12 @@
         border: 1px solid blue;
     }
 }
+
+.esempio2-titolo {
+    @extend .esempio2;
+    border: 1px solid blue;
+}
+
 
 //ESEMPIO DI ASSEGNAZIONE DI PSEUDOCLASSI CON SINTASSI SCSS
 .titolo {

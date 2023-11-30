@@ -21,9 +21,6 @@
 .esempio h1 {
   font-size: 30px;
 }
-.esempio h1 .titolo {
-  color: #fff;
-}
 
 .esempio2, .esempio2-titolo {
   background-color: #123456;
@@ -31,6 +28,10 @@
   padding: 30px;
   font-size: 20px;
 }
+.esempio2-titolo {
+  border: 1px solid blue;
+}
+
 .esempio2-titolo {
   border: 1px solid blue;
 }
