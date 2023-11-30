@@ -147,6 +147,7 @@ $paddingSizes: (
     }
 }
 
+//RICHIAMO IL MIXIN PER CREARE DELLE CLASSI CON PADDING DINAMICO
 @include creaPaddingDinamico(inline);
 
 //UTILIZZO MIXIN CON PARAMETRI SEMPLICE
