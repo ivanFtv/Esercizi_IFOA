@@ -58,6 +58,30 @@ h6 {
   padding: 25px;
 }
 
+.padding-inline-sm {
+  padding-inline: 12px;
+}
+
+.padding-inline-normal {
+  padding-inline: 16px;
+}
+
+.padding-inline-md {
+  padding-inline: 24px;
+}
+
+.padding-inline-lg {
+  padding-inline: 36px;
+}
+
+.padding-inline-xl {
+  padding-inline: 48px;
+}
+
+.padding-inline-xxl {
+  padding-inline: 160px;
+}
+
 .button {
   color: #fff;
   background-color: #000;

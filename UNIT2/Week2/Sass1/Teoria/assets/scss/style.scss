@@ -120,6 +120,35 @@ h6 {
     }
 }
 
+//CREO DELLE CLASSI PADDING DINAMICHE CON UN CICLO EACH
+
+//DEFINISCO UNA VARIABILE CHE CONTIENE UN ARRAY DI MISURE E PIXEL ASSOCIATI
+$paddingSizes: (
+    sm: 12px,
+    normal: 16px,
+    md: 24px,
+    lg: 36px,
+    xl: 48px,
+    xxl: 160px
+);
+
+//CON UN MIXIN E UN CICLO EACH VADO A CREARE DELLE CLASSI CON I NOMI DELLE MISURE E I VALORI ASSOCIATI
+//SE PASSERO UN PARAMETRO AL MIXIN VERRA APPLICATO IL PADDING SOLO IN QUELLA DIREZIONE
+//ALTRIMENTI VERRA APPLICATO IL PADDING SU TUTTI I LATI
+@mixin creaPaddingDinamico($direction) {
+    @each $size, $value in $paddingSizes {
+        .padding-#{$direction}-#{$size} {
+            @if $direction {
+                padding-#{$direction}: $value;
+            } @else {
+                padding: $value;
+            }
+        }
+    }
+}
+
+@include creaPaddingDinamico(inline);
+
 //UTILIZZO MIXIN CON PARAMETRI SEMPLICE
 .button {
     @include conParametriSimple(#fff, #000);
