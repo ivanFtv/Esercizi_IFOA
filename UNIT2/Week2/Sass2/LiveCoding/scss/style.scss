@@ -1,0 +1,94 @@
+@import 'reset';
+@import 'colors';
+@import 'fonts';
+@import 'sizes';
+@import 'spacings';
+@import 'animations';
+@import 'buttons';
+@import 'positions';
+@import 'misc';
+
+body {
+    background-color: map-get($setColors, bgColor);
+    font-family: $baseFont;
+    line-height: 1.6;
+}
+
+
+main {
+    position: relative;
+
+    .line-4 {
+        @include grid(4);
+        div {
+            padding-inline: 0.5rem;
+            img {
+                width: 100%;
+                @include floating;
+            }
+        }
+    }
+}
+
+.showcase {
+    background-color: map-get($setColors, bgHero);
+    min-height: 600px;
+
+    nav {
+        @include flex-center;
+        justify-content: space-between;
+        ul {
+            display: flex;
+            list-style: none;
+        }
+
+        li {
+            padding: 15px;
+        }
+
+        a {
+            color: map-get($setColors, textLight)
+        }
+
+        a:hover { 
+            color: map-get($setColors , secondaryColor);
+        }
+    }
+
+    &-content {
+        @include flex-center;
+        margin-top: 30px;
+
+        img {
+            @include floating(16px, 0 16px 36px rgb(0 0 0 /0.3), 2px solid lighten(map-get($setColors, bgHero), 30));
+            width: 50%;
+            @include animate(1s, -50%, 20%, 500ms)
+        }
+
+        h1 {
+            @include title-big;
+            @include animate(1s, 10px, 0, 300ms);
+        }
+
+        p {
+            @include animate(1s, 10px, 0, 300ms);
+            color: lighten(map-get($setColors, bgHero), 40);
+            font-size: $font-size-medium;
+            line-height: 1.6;
+            letter-spacing: 1px;
+            padding-inline-end: 3rem;
+        }
+
+        button:first-of-type {
+            @include animate(1s, -10px, 0, 900ms);
+        }
+        button:nth-of-type(2) {
+            @include animate(1s, 10px, 0, 1200ms);
+        }
+        button:last-of-type {
+            @include animate(1s, -10px, 0, 1500ms);
+        }
+    }
+
+
+}

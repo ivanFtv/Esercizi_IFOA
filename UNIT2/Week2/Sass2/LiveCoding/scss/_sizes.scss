@@ -1,0 +1,14 @@
+$font-size-small: 12px;
+$font-size-medium: 16px;
+$font-size-large: 24px;
+$font-size-xlarge: 48px;
+$font-size-xxlarge: 96px;
+
+
+@mixin title-big {
+    font-size: $font-size-xxlarge;
+    font-weight: 900;
+    line-height: 0.95;
+    margin-bottom: 1rem;
+    color: darken(map-get($setColors, bgHero), 25);
+}

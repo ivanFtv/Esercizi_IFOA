@@ -28,7 +28,7 @@ const students = [
     'Marta',
     'Martina',
     'Matteo',
-    'Michele',
+    'Michele S.',
     'Milena',
     'Nicole',
     'Paola',

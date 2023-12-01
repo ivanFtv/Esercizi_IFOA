@@ -1,0 +1,69 @@
+$padding-default: 20px;
+$margin-default: 0 auto;
+
+$sizes: (
+    sm: 12px,
+    normal: 16px,
+    md: 24px,
+    lg: 36px,
+    xl: 48px,
+    xxl: 160px,
+);
+
+@mixin create-padding($direction: null) {
+    @each $key, $value in $sizes {
+        .padding-#{$direction}-#{$key} { //NOME DELLA CLASSE
+            @if $direction {
+                padding-#{$direction}: $value; // PROPRIETA CON VALORE REGOLA CSS
+            } @else {
+                padding: $value;
+            }
+        }
+    }
+}
+
+
+@include create-padding();
+@include create-padding(top);
+@include create-padding(bottom);
+@include create-padding(left);
+@include create-padding(right);
+@include create-padding(block);
+@include create-padding(inline);
+
+
+
+@mixin create-margin($direction: null) {
+    @each $key, $value in $sizes {
+        .margin-#{$direction}-#{$key} { //NOME DELLA CLASSE
+            @if $direction {
+                margin-#{$direction}: $value; // PROPRIETA CON VALORE REGOLA CSS
+            } @else {
+                margin: $value;
+            }
+        }
+    }
+}
+
+
+@include create-margin();
+@include create-margin(top);
+@include create-margin(left);
+@include create-margin(bottom);
+@include create-margin(right);
+@include create-margin(block);
+@include create-margin(inline);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
