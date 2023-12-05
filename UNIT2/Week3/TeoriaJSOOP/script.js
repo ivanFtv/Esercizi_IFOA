@@ -1,82 +1,87 @@
-// const Macchina = function () => {
-//   finestrini = 'chiusi';
-//   pressioneRuote = 2.5;
 
-//   accendi = () => {
-//     this.motore = 'acceso';
-//   }
-//   spegni = () => {
-//     this.motore = 'spento';
-//   }
+// UTILIZZO DI CODICE PROCEDURALE
+// Creo un oggetto "Macchina" con le sue proprietà e i suoi metodi
+const Macchina = () => {
+    finestrini = 'chiusi';
+    pressioneRuote = 2.5;
 
-//   abbassaFinestrini = () => {
-//     this.finestrini = 'abbassati';
-//   }
-//     alzaFinestrini = () => {
-//         this.finestrini = 'chiusi';
-//     }
-// }
+    accendi = () => {
+        this.motore = 'acceso';
+    }
+    spegni = () => {
+        this.motore = 'spento';
+    }
 
+    abbassaFinestrini = () => {
+        this.finestrini = 'abbassati';
+    }
+    alzaFinestrini = () => {
+        this.finestrini = 'chiusi';
+    }
+}
 
+// Poi voglio creare un oggetto "Trattore", ma devo riscrivere tutte le proprietà e i metodi gia definiti per "Macchina"
+const Trattore = () => {
+    finestrini = 'chiusi';
+    pressioneRuote = 3.5;
 
-// const Trattore = function () => {
-//   finestrini = 'chiusi';
-//   pressioneRuote = 3.5;
+    accendi = () => {
+        motore = 'acceso';
+    }
+    spegni = () => {
+        motore = 'spento';
+    }
 
-//   accendi = () => {
-//     motore = 'acceso';
-//   }
-//   spegni = () => {
-//     motore = 'spento';
-//   }
+    abbassaFinestrini = () => {
+        finestrini = 'abbassati';
+    }
+    alzaFinestrini = () => {
+        finestrini = 'chiusi';
+    }
+}
 
-//   abbassaFinestrini = () => {
-//     finestrini = 'abbassati';
-//   }
-//   alzaFinestrini = () => {
-//     finestrini = 'chiusi';
-//   }
-// }
+// PASSIAMO ORA ALLA LOGICA A OGGETTI
+// Definisco degli oggetti "Motore" e "Sterzo" che hanno le loro proprietà e i loro metodi e che posso riutilizzare
+const Motore = () => {
+    stato = 'spento';
+    accendi = () => {
+        stato = 'acceso';
+    }
+    spegni = () => {
+        stato = 'spento';
+    }
+}
 
+const Sterzo = () => {
+    angolo = 0;
+    ruota = 0;
+    giraSinistra = () => {
+        angolo = 45;
+        ruota = 45;
+    }
+    giraDestra = () => {
+        angolo = -45;
+        ruota = -45;
+    }
+}
 
-// const Motore = () => {
-//     stato = 'spento';
-//     accendi = () => {
-//         stato = 'acceso';
-//     }
-//     spegni = () => {
-//         stato = 'spento';
-//     }
-// }
+// A questo punto mi basta richiamarli all'interno di un oggetto "FerrariBerlinetta" e "FiatPanda" che avranno le loro proprietà e i loro metodi
+// Senza dover riscrivere per ogni oggetto lo stesso codice
+const FerrariBerlinetta = () => {
+    motore = new Motore();
+    sterzo = new Sterzo();
 
-// const Sterzo = () => {
-//     angolo = 0;
-//     ruota = 0;
-//     giraSinistra = () => {
-//         angolo = 45;
-//         ruota = 45;
-//     }
-//     giraDestra = () => {
-//         angolo = -45;
-//         ruota = -45;
-//     }
-// }
+    sterzo.giraDestra();
+    sterzo.giraSinistra();
+}
 
-// const FerrariBerlinetta = () => {
-//     motore = new Motore();
-//     sterzo = new Sterzo();
+const FiatPanda = () => {
+    motore = new Motore();
+    sterzo = new Sterzo();
 
-//     sterzo.giraDestra();
-//     sterzo.giraSinistra();
-// }
-
-// const FiatPanda = () => {
-//     motore = new Motore();
-//     sterzo = new Sterzo();
-
-//     sterzo.giraDestra();
-//     sterzo.giraSinistra();
-// }
+    sterzo.giraDestra();
+    sterzo.giraSinistra();
+}
 
 
 
