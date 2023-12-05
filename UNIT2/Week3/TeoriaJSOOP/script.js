@@ -158,26 +158,10 @@ class Programmatore extends Persona {
     }
 }
 
-// Persona.getData();
 
-// const persona2 = new Persona();
-// persona1 = new Persona('Mario', 'Rossi');
-// persona1.saluta();
-// persona2.getData();
+// VEDIAMO UN ESEMPIO PIU STRUTTURATO
 
-Persona.saluta();
-
-antonio = new Persona('Antonio', 'Verdi');
-antonio._salute = 10000;
-
-// programmatore1 = new Programmatore('Giulio', 'Verdi', 'Javascript', 10);
-// programmatore1.presentati();
-
-
-
-
-
-
+// Creiamo una classe "CasaCostruttrice", potro quindi creare oggetti di questa classe che avranno le loro proprieta e i loro metodi (es. Fiat, Ferrari, ecc...)
 class CasaCostruttrice {
     constructor(nome, sede) {
         this.nome = nome;
@@ -202,12 +186,14 @@ class CasaCostruttrice {
     }
 }
 
+// Poi creiamo anche Concessionaria che estende CasaCostruttrice, quindi avra tutte le proprieta e i metodi di CasaCostruttrice e in piu le sue proprieta e i suoi metodi
 class Concessionaria extends CasaCostruttrice {
     constructor(nome, sede, numeroDipendenti) {
         super(nome, sede);
         this.numeroDipendenti = numeroDipendenti;
     }
 
+    // Posso anche decidere di sovrascrivere un metodo della classe padre
     getNome() {
         console.log(this.nome + ' concessionaria');
     }
@@ -226,7 +212,8 @@ class Concessionaria extends CasaCostruttrice {
     }
 }
 
-
+// Infine creiamo una classe Suv che estende Concessionaria, quindi avra tutte le proprieta e i metodi di Concessionaria che a sua volta ha ereditato da CasaCostruttrice
+// e in piu le sue proprieta e i suoi metodi
 class Suv extends Concessionaria {
     constructor(nome, sede, numeroDipendenti, modello, colore, prezzo) {
         super(nome, sede, numeroDipendenti);
@@ -252,38 +239,12 @@ class Suv extends Concessionaria {
     }
 }
 
+// Istanzio diversi oggetti della classe Suv, in base ai parametri che gli passo, senza dover mai piu scrivere una riga di codice
 RangeRoverEvoque = new Suv('Range Rover', 'Roma', 10, 'Evoque', 'Nero', 50000);
-RangeRoverEvoque.getProvenienza();
-RangeRoverEvoque.getColore();
-RangeRoverEvoque.getModello();
-RangeRoverEvoque.getPrezzo();
-RangeRoverEvoque.getDipendenti();
-RangeRoverEvoque.brochure();
-RangeRoverEvoque.brochureConcessionaria();
-RangeRoverEvoque.getNome();
-
-
 FerrariSUV = new Suv('Ferrari', 'Milano', 50, 'SUV', 'Rosso', 500000);
-FerrariSUV.getProvenienza();
-FerrariSUV.getColore();
-FerrariSUV.getModello();
-FerrariSUV.getPrezzo();
-FerrariSUV.getDipendenti();
-FerrariSUV.brochure();
-FerrariSUV.brochureConcessionaria();
-FerrariSUV.getNome();
-
-// class Berlina extends Concessionaria {
-//     constructor(nome, sede, numeroDipendenti, modello, colore, prezzo) {
-//         super(nome, sede, numeroDipendenti);
-//         this.modello = modello;
-//         this.colore = colore;
-//         this.prezzo = prezzo;
-//     }
-// }
 
 
-
+// Esempio di Programmazione a oggetti utilizzando la nuova sintassi "class"
 class Motore {
     constructor() {
         this.stato = 'spento';
@@ -349,9 +310,6 @@ class FiatPanda {
     }
 }
 
-
-const auto = new FerrariBerlinetta();
-auto.getData();
 
 
 
