@@ -83,6 +83,17 @@ const FiatPanda = () => {
     sterzo.giraSinistra();
 }
 
+// Ecco come posso ereditare le proprieta e i metodi di un oggetto padre "Fiat" all'interno di un oggetto figlio "FiatTipo"    
+// Utilizzando la "vecchia" sintassi delle funzioni costruttrici
+const Fiat = () => {
+    motore = new Motore();
+    sterzo = new Sterzo();
+}
+
+const FiatTipo = () => {
+    Fiat.call(this, motore, sterzo);
+}
+
 
 // CLASSI ED EREDITARIETA
 // Definiamo una classe "Persona" con le sue proprietà e i suoi metodi
