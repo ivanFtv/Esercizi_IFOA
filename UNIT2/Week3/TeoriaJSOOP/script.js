@@ -84,68 +84,24 @@ const FiatPanda = () => {
 }
 
 
+// CLASSI ED EREDITARIETA
+// Definiamo una classe "Persona" con le sue proprietà e i suoi metodi
+class Persona {
+    constructor(nome, cognome) {
+    this.nome = nome;
+    this.cognome = cognome;
+    }
 
-// class Persona (nome, cognome) {
-//     this.nome = nome;
-//     this.cognome = cognome;
+    getData () {
+        console.log(nome + ' ' + cognome);
+    }
+}
 
-//     function getData () {
-//         console.log(nome + ' ' + cognome);
-//     }
-// }
+// Per instanziare un oggetto della classe "Persona" dobbiamo usare la parola chiave "new" esattamente come facevamo con le funzioni costruttrici
+const persona1 = new Persona('Mario', 'Rossi');
 
-// function Programmatore (linguaggi) {
-//     // Programmatore.prototype = new Persona();
-//     let linguaggi = linguaggi;
-
-//     let nome = 'Mario';
-//     let cognome = 'Rossi';
-
-//     function getData () {
-//         return nome + ' ' + cognome + ' ' + linguaggi;
-//     }
-// }
-
-
-// const persona1 = function (nome, cognome) {
-//     this.nome = nome;
-//     this.cognome = cognome;
-
-//     this.getData = function () {
-//         console.log(nome + ' ' + cognome);
-//     }
-// }
-
-// const persona2 = function (nome, cognome) {
-//     this.nome = nome;
-//     this.cognome = cognome;
-
-//     this.getData = function () {
-//         console.log(nome + ' ' + cognome);
-//     }
-// }
-
-// const oggetto = {
-//     nome: 'Mario',
-//     cognome: 'Rossi',
-//     citta: 'Roma',
-//     paese: 'Italia',
-// }
-
-
-
-// const Persona = function (nomeR, cognomeR) {
-//     this.nome = nomeR;
-//     this.cognome = cognomeR;
-
-//     this.getData = function () {
-//         console.log(this.nome + ' ' + this.cognome);
-//     }
-// }
-
-// const Programmatore = function (nomeR, cognomeR) {
-//     Persona.call(this, nomeR, cognomeR);
-// }
+// "persona1" ora è un oggetto della classe "Persona" e quindi ha accesso a tutte le sue proprietà e i suoi metodi
+persona1.getData();
 
 
 class Persona {
@@ -154,8 +110,11 @@ class Persona {
         this.cognome = cognome;
     }
 
+    // Cosi posso definire una proprieta "Protetta" che non va modificata direttamente
+    // Ma ricordiamoci che in JS non esistono proprieta REALMENTE private o protette, questa e solo una convenzione di scrittura
     _salute = 100;
 
+    // Potro definire quindi dei getter e dei setter per accedere alla proprieta "Protetta"
     getSalute() {
         console.log(this._salute);
     }
@@ -174,6 +133,8 @@ class Persona {
         console.log('Ciao sono ' + this.nome + ' ' + this.cognome);
     }
 
+    // Attraverso la parola "static" posso definire un metodo che non ha bisogno di essere istanziato per essere utilizzato
+    // Ma ne ho accesso direttamente dalla chiamata alla classe Persona.saluta()
     static saluta() {
         console.log('Ciao sono una persona');
     }
