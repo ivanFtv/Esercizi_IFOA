@@ -140,13 +140,18 @@ class Persona {
     }
 }
 
+// Utilizzando la nuova keyword "class" abbiamo accesso anche alla keyword "extends" per estendere una classe padre
+// Programmatore quindi ereditera tutte le proprieta e i metodi della classe Persona e in piu avra le sue proprieta e i suoi metodi
 class Programmatore extends Persona {
+    // Nel costruttore dovro avere tutti i parametri della classe padre "Persona" e in piu quelli della classe figlia "Programmatore"
     constructor(nome, cognome, linguaggio, anniEsperienza) {
+        // Per andare a richiamare il costruttore della classe padre "Persona" dobbiamo usare la funzione "super()" passandogli i parametri che necessita
         super(nome, cognome);
         this.linguaggio = linguaggio;
         this.anniEsperienza = anniEsperienza;
     }
 
+    // Presentati va a richiamare il metodo "saluta" della classe padre "Persona" attraverso la funzione super(), e poi aggiunge qualcosa in piu
     presentati() {
         super.saluta();
         console.log('Programmo in ' + this.linguaggio + ' da ' + this.anniEsperienza + ' anni');
