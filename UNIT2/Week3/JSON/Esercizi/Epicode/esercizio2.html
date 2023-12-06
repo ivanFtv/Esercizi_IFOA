@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2 id="timer"></h2>
+
+
+    <script>
+        let i = sessionStorage.getItem("count") ? parseInt(sessionStorage.getItem("count")) : 0
+
+        const conta = function() {
+            i = i + 1
+            document.getElementById("timer").innerText = i;
+            sessionStorage.setItem("count", i)
+        }
+
+        setInterval(conta, 1000)
+    </script>
+    
+</body>
+</html>

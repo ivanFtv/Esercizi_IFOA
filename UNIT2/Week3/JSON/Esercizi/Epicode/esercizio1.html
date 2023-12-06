@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2 id="title"></h2>
+    <input type="text" id="user">
+    <button id="btn-salva" onclick="save()">Salva</button>
+    <button id="btn-elimina" onclick="deleteData()">Elimina</button>
+
+    <script>
+        const save = function() {
+            let name = document.getElementById('user').value
+            localStorage.setItem('utente', name)
+            check()
+        }
+
+        const deleteData = function() {
+            localStorage.removeItem('utente')
+            check()
+        }
+
+        const check = function() {
+            if (localStorage.getItem('utente')) {
+                txt = 'Ciao ' + localStorage.getItem('utente')
+            } else {
+                txt = 'Empty'
+            }
+            document.getElementById('title').innerText = txt
+        }
+
+        window.onload = check
+    </script>
+</body>
+</html>
