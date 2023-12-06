@@ -1,0 +1,41 @@
+// OGGETTO JSON SINGOLO
+{
+    "nome": "alice",
+    "cognome": "ddddddd",
+    "citta": "milano"
+}
+
+// ARRAY OGGETTI JSON
+{
+    "studenti": [
+        {
+            "nome": "alice",
+            "cognome": "ddddd",
+            "citta": "milano",
+            "promosso": true,
+            "lingue": [
+                "italiano",
+                "inglese"
+            ],
+            "compleanno": {
+                "giorno": "Mercoledi",
+                "mese": "Agosto",
+            }
+        },
+        {
+            "nome": "daniele",
+            "cognome": "rrrrrrrr",
+            "citta": "pavia",
+            "promosso": false,
+            "lingue": [
+                "italiano",
+                "inglese",
+                "spagnolo"
+            ],
+            "compleanno": {
+                "giorno": "Lunedi",
+                "mese": "Novembre",
+            }
+        }
+    ]
+}
