@@ -147,6 +147,8 @@
 
 
         function populateHomePage(data) {
+            booksWrapper.innerHTML = "";
+
             data.forEach(book => {
                 const isBookInCart = shoppingCartList.findIndex((bookCart) => bookCart.asin === book.asin) !== -1;
                 booksWrapper.innerHTML += `
@@ -189,9 +191,9 @@
         }
 
         function loadShoppingCart() {
+            shoppingCart.innerHTML = "<h3>Carrello</h3>";
 
             shoppingCartList.forEach((book) => {
-                shoppingCart.innerHTML = "<h3>Carrello</h3>";
                 shoppingCart.innerHTML += `
                     <div class="shopping-item">
                     <div class="d-flex align-items-start gap-2">
@@ -227,7 +229,6 @@
 
             populateHomePage(globalBooks);
             loadShoppingCart();
-            
         }
 
         window.onload = () => {
