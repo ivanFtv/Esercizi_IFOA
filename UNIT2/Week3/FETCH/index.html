@@ -6,87 +6,235 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        h1 {
+            font-size: 105px;
+            letter-spacing: -4px;
+            font-weight: 900;
+            margin-bottom: -20px;
+            text-align: center;
+            color: lightcoral
+        }
+
+        @media screen and (max-width: 400px) {
+            h1 {
+                font-size: 80px;
+                margin-bottom: -36px;
+            }
+        }
+
+        #shopping-cart {
+            position: fixed;
+            top: 50%;
+            left: 0px;
+            transform: translateY(-50%);
+            background-color: white;
+            z-index: 1;
+            transition: all .8s 1s;
+            box-shadow: -30px 0 60px -3px rgb(0 0 0 / 30%);
+            min-width: 66px;
+            min-height: 66px;
+            max-width: 66px;
+            max-height: 66px;
+            overflow-y: auto;
+            border-top-right-radius: 6px;
+            border-bottom-right-radius: 6px;
+        }
+
+        #shopping-cart {
+            padding: 1em;
+            overflow: hidden;
+        }
+
+        #shopping-cart::before {
+            content: url("data:image/svg+xml, <svg xmlns='http://www.w3.org/2000/svg' width='26' height='26' fill='red' class='bi bi-cart3' viewBox='0 0 16 16'> <path d='M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z'/></svg>");
+            position: sticky;
+            top: 12px;
+            left: 2px;
+            margin: auto;
+            transition: all .25s 1.5s;
+        }
+
+        #shopping-cart>div {
+            margin-block-end: 2em;
+        }
+
+        #shopping-cart>h3 {
+            margin-top: -24px;
+        }
+
+        #shopping-cart> :where(h3, div) {
+            opacity: 0;
+            transition: all .6s 1s;
+
+            pointer-events: none;
+        }
+
+        #shopping-cart:hover> :where(h3, div) {
+            opacity: 1;
+            pointer-events: initial;
+            transition: all 0.4s .2s;
+        }
+
+        #shopping-cart:hover {
+            max-width: 400px;
+            max-height: 70vh;
+            padding: 2em;
+            overflow-y: auto;
+            transition: all 0.4s;
+        }
+
+        #shopping-cart:hover::before {
+            opacity: 0;
+            transition: all 0.15s;
+        }
+
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+        }
+
+        .card-body>*:nth-last-child(2) {
+            margin-top: auto;
+        }
+
+        .card-title {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+        }
+
+        .selected {
+            box-shadow:0 0 20px -3px rgb(140, 219, 22) !important;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <div class="row" id="root">
-
-        </div>
+    <div class="container-fluid">
+        <h1>Libreria</h1>
+        
     </div>
+
+    <div id="shopping-cart">
+    </div>
+
+    <div class="container">
+        <h5 id="loading">Un attimo, sto caricano...</h5>
+        <div id="books-wrapper" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4"></div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
     <script>
+        const booksWrapper = document.getElementById("books-wrapper");
+        const shoppingCart = document.getElementById("shopping-cart");
         const url = 'https://striveschool-api.herokuapp.com/books';
+        let globalBooks = [];
+        let shoppingCartList = localStorage.getItem("shoppingCart") ? JSON.parse(localStorage.getItem("shoppingCart")) : [];
 
-        fetch(url)
-        .then(response => response.json()
-        .then(data => populateHomePage(data)))
+        const retriveBook = () => {
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    populateHomePage(data)
+                    globalBooks = data;
+                })
+                .then(() => document.getElementById("loading").remove())
+                .catch(err => console.log(err.message))
+        }
 
 
         function populateHomePage(data) {
             data.forEach(book => {
-                let card = document.createElement('div');
-                card.classList.add('card');
-                card.style.width = '18rem';
-                card.style.margin = '10px';
-                card.style.display = 'inline-block';
-
-                let img = document.createElement('img');
-                img.src = book.img;
-                img.classList.add('card-img-top');
-                img.alt = '...';
-
-                let cardBody = document.createElement('div');
-                cardBody.classList.add('card-body');
-
-                let cardTitle = document.createElement('h5');
-                cardTitle.classList.add('card-title');
-                cardTitle.innerText = book.title;
-
-                let cardText = document.createElement('p');
-                cardText.classList.add('card-text');
-                cardText.innerText = book.category;
-
-                let cardLink = document.createElement('a');
-                cardLink.classList.add('btn', 'btn-primary', 'me-2');
-
-                let cardRemove = document.createElement('a');
-                cardRemove.classList.add('btn', 'btn-danger', 'me-2');
-
-                let cardRemoveFromCart = document.createElement('a');
-                cardRemoveFromCart.classList.add('btn', 'btn-warning', 'me-2');
-            
-                cardLink.href = '#';
-                cardLink.innerText = 'AtC';
-
-                cardRemove.href = '#';
-                cardRemove.innerText = 'Remove';
-
-                cardRemoveFromCart.href = '#';
-                cardRemoveFromCart.innerText = 'DEL';
-
-                cardBody.appendChild(cardTitle);
-                cardBody.appendChild(cardText);
-                cardBody.appendChild(cardLink);
-                cardBody.appendChild(cardRemove);
-                cardBody.appendChild(cardRemoveFromCart);
-
-                card.appendChild(img);
-                card.appendChild(cardBody);
-
-                document.querySelector('#root').appendChild(card);
-            })
+                const isBookInCart = shoppingCartList.findIndex((bookCart) => bookCart.asin === book.asin) !== -1;
+                booksWrapper.innerHTML += `
+                    <div class="col">
+                    <div class="card shadow-sm h-100 ${isBookInCart ? 'selected' : ''}">
+                        <img src="${book.img}" class="img-fluid card-img-top" alt="${book.title}">
+                        <div class="card-body">
+                        <h5 class="card-title">${book.title}</h5>
+                        <p class="card-text badge rounded-pill bg-dark mb-2">${book.category}</p>
+                        <p class="fs-4">${book.price}€</p>
+                        <div>
+                            <button class="btn btn-success" onclick="addToCart(event, '${book.asin}')">Compra ora</button>
+                            <button class="btn btn-outline-danger" onclick="skipMe(event)">
+                                Scarta
+                            </button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>`;
+            });
         }
+
+        const skipMe = (event) => {
+            event.target.closest('.col').remove()
+        }
+
+        const addToCart = (event, asin) => {
+
+            const isBookInCart = shoppingCartList.findIndex((book) => book.asin === asin) !== -1;
+            if (isBookInCart) {
+                return;
+            }
+
+            const book = globalBooks.find((book) => book.asin === asin);
+            shoppingCartList.push(book)
+            localStorage.setItem("shoppingCart", JSON.stringify(shoppingCartList))
+
+            loadShoppingCart()
+            event.target.closest(".card").classList.add("selected");
+        }
+
+        function loadShoppingCart() {
+
+            shoppingCartList.forEach((book) => {
+                shoppingCart.innerHTML = "<h3>Carrello</h3>";
+                shoppingCart.innerHTML += `
+                    <div class="shopping-item">
+                    <div class="d-flex align-items-start gap-2">
+                            <img src=${book.img}  class="img-fluid" width="60" />
+                        <div class="flex-grow-1">
+                            <p class="mb-2">
+                                ${book.title}
+                            </p>
+                            <div class="d-flex justify-content-between">
+                                <p class="fw-bold">
+                                    ${book.price}€
+                                </p>
+                                <div>
+                                    <div>
+                                        <button class="btn btn-danger" onclick="deleteItem('${book.asin}')">Elimina </button>
+                                    </div>
+                                </div>
+                            </div >
+                        </div >
+                    </div >
+                    </div>
+                `;
+            });
+        }
+
+        function deleteItem(asin) {
+            const index = shoppingCartList.findIndex((book) => book.asin === asin);
+
+            if ( index !== -1 ) {
+                shoppingCartList.splice(index, 1);
+                localStorage.setItem("shoppingCart", JSON.stringify(shoppingCartList));
+            }
+
+            populateHomePage(globalBooks);
+            loadShoppingCart();
+            
+        }
+
+        window.onload = () => {
+            retriveBook();
+            loadShoppingCart();
+        }
+           
     </script>
 </body>
 </html>
-
-
-<div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
