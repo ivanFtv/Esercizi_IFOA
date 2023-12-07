@@ -148,55 +148,57 @@ getPosts();
 
 
 // FETCH POST
-// const url = 'https://jsonplaceholder.typicode.com/posts/edit/1';
+const url = 'https://jsonplaceholder.typicode.com/posts/edit/1';
 
-// function createPost() {
-//     console.log('Inizio operazione');
+function createPost() {
+    console.log('Inizio operazione');
 
-//     fetch(url, {
-//         method: 'PATCH',    // GET, POST, PUT, DELETE, PATCH
-//         body: JSON.stringify({
-//             email: 'mail',
-//         })
-//     })
-//     .then((response) => response.json())
-//     .then((data) => {
-//         console.log(data);
-//     })
-// }
+    fetch(url, { // A DIFFERENZA DEL GET, IL POST RICHIEDE UN OGGETTO CON LE OPZIONI
+        method: 'PATCH',    // GET, POST, PUT, DELETE, PATCH
+        body: JSON.stringify({ // IL PAYLOAD RIGUARDANTE I DATI CHE VOGLIO INVIARE
+            name: 'Mario',
+            lastName: 'Rossi',
+            email: 'rossi.mario@gmail.com',
+        })
+    })
+    .then((response) => response.json())
+    .then((data) => {
+        console.log(data);
+    })
+}
 
-// createPost();
-
-
-// FETCH FORMDATA
-// const formData = new FormData();
-// formData.append('nome', 'Mario');
-// formData.append('cognome', 'Rossi');
-
-// const options = {
-//     method: 'POST',
-//     headers: {
-//         'Content-Type': 'application/json',
-//         'Authentication': token,
-//         // 'Accept': 'application/json'
-//     },
-//     body: JSON.stringify({
-//         nome: 'Mario',
-//         cognome: 'Rossi',
-//         citta: 'Roma',
-//         telefono: '3333333333'
-//     })
-// }
+createPost();
 
 
-// fetch(url, options)
-// .then((response) => {
-//     if (!response.ok) {
-//         console.log(response.statusText);
-//     } else {
-//         response.json()
-//         .then((data) => {
-//             console.log(data);
-//         })
-//     }
-// })
+// ESEMPIO FETCH FORMDATA
+const formData = new FormData();
+formData.append('nome', 'Mario');
+formData.append('cognome', 'Rossi');
+
+const options = {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'multipart/form-data', //CAMBIO IL CONTENT TYPE IN MODO DA POTER INVIARE UN OGGETTO FORMDATA
+        'Authentication': token, // MI DEVO AUTENTICARE PER CASO? DOVRO INSERIRE UN TOKEN
+        'Accept': 'application/json' //COSA MI ASPETTO DI RICEVERE
+    },
+    body: JSON.stringify({
+        nome: 'Mario',
+        cognome: 'Rossi',
+        citta: 'Roma',
+        telefono: '3333333333'
+    })
+}
+
+
+fetch(url, options) //QUI A DIFFERENZA DI PRIMA PASSO L'OGGETTO CON LE OPZIONI INVECE DI SCRIVERLE DIRETTAMENTE NEL FETCH
+.then((response) => {
+    if (!response.ok) {
+        console.log(response.statusText);
+    } else {
+        response.json()
+        .then((data) => {
+            console.log(data);
+        })
+    }
+})
