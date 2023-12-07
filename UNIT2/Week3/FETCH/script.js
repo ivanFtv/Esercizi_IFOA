@@ -148,12 +148,12 @@ getPosts();
 
 
 // FETCH POST
-const url = 'https://jsonplaceholder.typicode.com/posts/edit/1';
+const url2 = 'https://jsonplaceholder.typicode.com/posts/edit/1';
 
 function createPost() {
     console.log('Inizio operazione');
 
-    fetch(url, { // A DIFFERENZA DEL GET, IL POST RICHIEDE UN OGGETTO CON LE OPZIONI
+    fetch(url2, { // A DIFFERENZA DEL GET, IL POST RICHIEDE UN OGGETTO CON LE OPZIONI
         method: 'PATCH',    // GET, POST, PUT, DELETE, PATCH
         body: JSON.stringify({ // IL PAYLOAD RIGUARDANTE I DATI CHE VOGLIO INVIARE
             name: 'Mario',
