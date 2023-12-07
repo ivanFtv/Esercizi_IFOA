@@ -90,60 +90,59 @@ recuperaDati()
 
 
 // PROMISES MULTIPLA
+function primaOperazione() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log('Prima operazione completata');
+            resolve(1);
+        }, 2000);
+    });
+}
 
-// function primaOperazione() {
-//     return new Promise((resolve, reject) => {
-//         setTimeout(() => {
-//             console.log('Prima operazione completata');
-//             resolve(1);
-//         }, 2000);
-//     });
-// }
+function secondaOperazione(dato) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log('Seconda operazione completata', dato);
+            resolve(dato + 1);
+        }, 2000);
+    });
+}
 
-// function secondaOperazione(dato) {
-//     return new Promise((resolve, reject) => {
-//         setTimeout(() => {
-//             console.log('Seconda operazione completata', dato);
-//             resolve(dato + 1);
-//         }, 2000);
-//     });
-// }
-
-// function terzaOperazione(dato) {
-//     return new Promise((resolve, reject) => {
-//         setTimeout(() => {
-//             console.log('Terza operazione completata', dato);
-//             resolve( dato + 1);
-//         }, 2000);
-//     });
-// }
-
-
-// primaOperazione()
-// .then((dato) => {
-//     return secondaOperazione(dato);
-// })
-// .then((dato) => {
-//     return terzaOperazione(dato);
-// })
-// .then((dato) => {
-//     console.log('Operazioni completate', dato);
-// })
+function terzaOperazione(dato) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log('Terza operazione completata', dato);
+            resolve( dato + 1);
+        }, 2000);
+    });
+}
 
 
+primaOperazione()
+.then((dato) => {
+    return secondaOperazione(dato);
+})
+.then((dato) => {
+    return terzaOperazione(dato);
+})
+.then((dato) => {
+    console.log('Operazioni completate', dato);
+})
+
+
+// IL NOSTRO CARO FETCH E' PROPRIO UNA PROMISE
 const url = 'https://striveschool-api.herokuapp.com/books';
 
 async function getPosts() {
     console.log('Inizio operazione');
     fetch(url)
     .then((response) => {
-        response.json()
-        .then((data) => {
+        response.json() // ANCHE QUESTO RESTITUISCE UNA PROMISE
+        .then((data) => { //QUINDI POSSO USARE IL .then() PER ACCEDERE AI DATI UNA VOLTA CHE SONO STATI CONVERTITI IN JSON
             console.log(data.title);
         })
     })
 }
-
 
 getPosts();
 
