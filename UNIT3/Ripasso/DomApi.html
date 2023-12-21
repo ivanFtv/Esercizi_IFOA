@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Propagation Example</title>
+  <style>
+    div { border: 1px solid black; padding: 10px; margin: 5px; }
+  </style>
+</head>
+<body>
+
+  <div id="outer">
+    <div id="middle">
+      <div id="inner">Click me!</div>
+    </div>
+  </div>
+
+  <script>
+
+    const eles = document.querySelector('div');
+    console.log(eles);
+    // eles.forEach(ele => {
+    //   console.log(ele);
+    // });
+
+  </script>
+
+</body>
+</html>

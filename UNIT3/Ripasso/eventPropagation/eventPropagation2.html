@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Propagation Example</title>
+  <style>
+    #outer { border: 1px solid black; padding: 10px; margin: 5px; background-color: thistle;}
+    #inner { border: 1px solid black; padding: 10px; margin: 5px; background-color: rgb(122, 108, 122);}
+  </style>
+</head>
+<body>
+
+  <div id="outer">
+    <span>Change Outer Background color</span>
+      <div id="inner">
+        <span>Change Inner Backgound color</span>
+      </div>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
