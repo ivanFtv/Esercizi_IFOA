@@ -1,9 +1,12 @@
 import './App.css'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import Button from './components/Button'
+import ButtonFunction from './components/ButtonFunction'
+import ButtonChangeTitle from './components/ButtonChangeTitle'
 import ButtonClass from './components/ButtonClass'
 import { useState, useEffect } from 'react'
+// USESTATE E USEEFFECT SONO HOOK DI REACT E SI UTILIZZANO PER GESTIRE LO STATO DI UN COMPONENTE
+// SI CHIAMANO PROPRIO COSI E VANNO IMPORTATI DA REACT
 
 function App() {
   const [newTitle, setNewTitle] = useState("Vite + React");
@@ -30,8 +33,10 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <Button pippo={initialCounter} changePageTitle={retrivePageTitle}/>
+        <ButtonFunction pippo={initialCounter}/>
         <ButtonClass pippo={initialCounter}/>
+        {/* PER CAMBIARE IL TITOLO DELLA PAGINA DEVO PASSARE UN DATO DAL FIGLIO AL PADRE E LO FACCIO CON UNA CALLBACK */}
+        <ButtonChangeTitle changePageTitle={retrivePageTitle}/>
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
