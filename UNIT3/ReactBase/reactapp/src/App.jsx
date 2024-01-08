@@ -1,10 +1,22 @@
-import { useState } from 'react'
+import './App.css'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import './App.css'
+import Button from './components/Button'
+import ButtonClass from './components/ButtonClass'
+import { useState, useEffect } from 'react'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [newTitle, setNewTitle] = useState("Vite + React");
+
+  const retrivePageTitle = (data) => {
+    setNewTitle(data);
+  }
+
+  useEffect(() => {
+    document.title = newTitle
+  }, [newTitle]);
+
+  const initialCounter = 5;
 
   return (
     <>
@@ -18,9 +30,8 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+        <Button pippo={initialCounter} changePageTitle={retrivePageTitle}/>
+        <ButtonClass pippo={initialCounter}/>
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
