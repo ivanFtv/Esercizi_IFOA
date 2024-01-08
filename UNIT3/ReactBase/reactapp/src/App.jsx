@@ -9,15 +9,16 @@ import { useState, useEffect } from 'react'
 // SI CHIAMANO PROPRIO COSI E VANNO IMPORTATI DA REACT
 
 function App() {
-  const [newTitle, setNewTitle] = useState("Vite + React");
 
-  const retrivePageTitle = (data) => {
-    setNewTitle(data);
+  const [pageTitle, setPageTitle] = useState("Vite + React");
+
+  const retrivePageTitle = (newTitle) => {
+    setPageTitle(newTitle);
   }
 
   useEffect(() => {
-    document.title = newTitle
-  }, [newTitle]);
+    document.title = pageTitle
+  }, [pageTitle]);
 
   const initialCounter = 5;
 
@@ -36,7 +37,7 @@ function App() {
         <ButtonFunction pippo={initialCounter}/>
         <ButtonClass pippo={initialCounter}/>
         {/* PER CAMBIARE IL TITOLO DELLA PAGINA DEVO PASSARE UN DATO DAL FIGLIO AL PADRE E LO FACCIO CON UNA CALLBACK */}
-        <ButtonChangeTitle changePageTitle={retrivePageTitle}/>
+        <ButtonChangeTitle changePageTitle={retrivePageTitle} />
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>

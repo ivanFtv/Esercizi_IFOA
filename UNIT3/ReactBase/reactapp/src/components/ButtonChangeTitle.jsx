@@ -1,21 +1,20 @@
 
-const Button = (props, changePageTitle) => {
+const Button = (props) => {
 
-const sendTitle = () => {
-  props.changePageTitle("Cippirimerlo");
-}
+  const sendTitle = () => {
+    props.changePageTitle("Cippirimerlo");
+  }
 
-   const stileComp = {
-      marginTop: '150px',
-      paddingLeft: '50px',
-   }
+    const stileComp = {
+        border: '1px solid black',
+    }
 
-    return (
-        <button style={stileComp} onClick={sendTitle} >
-          Cambia Titolo Pagina
-        </button>
-    )
-}
+      return (
+          <button onClick={sendTitle} >
+            Cambia Titolo Pagina
+          </button>
+      )
+  }
 
 export default Button
 
