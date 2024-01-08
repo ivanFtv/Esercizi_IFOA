@@ -37,4 +37,3 @@ const mapStudents = students.map((student, index) => {
   }, {});
   
   console.log(groupedStudents);
-  
