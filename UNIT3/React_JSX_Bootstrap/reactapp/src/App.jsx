@@ -3,23 +3,21 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 import NavBarDark from './components/NavBarDark';
 import FooterDark from './components/FooterDark';
-import {Container, Row, Col} from 'react-bootstrap/';
-import Jumbotron from './components/Jumbotron';
-import Lista from './components/lista';
+import Main from './components/Main';
+import { useEffect, useState } from 'react';
 
 function App() {
+
+  const [title, setTitle] = useState('Libreria del Centro')
+
+  useEffect(() => {
+    document.title = title
+  }, [title])
 
   return (
     <>
       <NavBarDark />
-      <Container style={{ minHeight: '85vh' }}>
-        <Row>
-          <Jumbotron />
-        </Row>
-        <Row>
-          <Lista />
-        </Row>
-      </Container>
+      <Main setPageTitle={setTitle}/>
       <FooterDark />
     </>
   )
