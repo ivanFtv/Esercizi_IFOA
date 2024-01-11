@@ -1,7 +1,7 @@
 import Spinner from 'react-bootstrap/Spinner';
 
-function GrowExample() {
+function SpinnerWait() {
   return <Spinner animation="grow" />;
 }
 
-export default GrowExample;
+export default SpinnerWait;
