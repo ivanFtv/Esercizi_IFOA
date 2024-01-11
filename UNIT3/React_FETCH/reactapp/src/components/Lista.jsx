@@ -9,7 +9,6 @@ const Lista = ({retriveTitle}) => {
     const [listFiltered, setListFiltered] = useState([]);
 
     const categories = ['fantasy', 'history', 'horror', 'romance', 'scifi']
-    // const categories = ['Fantasy', 'History', 'Horror', 'Romance', 'Scifi', 'Astronomia', 'Cucina']
 
     function handleSearch(event) {
         let value = new RegExp(event.target.value, 'i') // 'i' = 'case insensitive
