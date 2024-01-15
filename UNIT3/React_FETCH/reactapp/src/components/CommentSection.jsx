@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import NewBookRate from './NewBookRate';
 import SingleComment from './SingleComment';
 import SpinnerWait from './SpinnerWait';
+import ErrorAlert from './ErrorAlert';
 
 const CommentSection = ({asin}) => {
 
