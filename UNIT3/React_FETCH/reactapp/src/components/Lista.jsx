@@ -29,7 +29,6 @@ const Lista = ({retriveTitle}) => {
             <ListButtons setList={setList} />
             <SearchComponent handleSearch={handleSearch} />
             {/* <ListButtonsSuper categories={categories} setList={setList}/> */}
-
             <div className="d-flex justify-content-between flex-wrap">
             {listFiltered.map((book) => 
                 <SingleCard book={book} key={book.asin} />

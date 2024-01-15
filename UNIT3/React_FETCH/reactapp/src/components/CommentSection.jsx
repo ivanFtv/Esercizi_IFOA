@@ -9,9 +9,60 @@ const CommentSection = ({asin}) => {
     const [isLoading, setLoading] = useState(false)
     const [isError, setError] = useState(false)
 
-     const fetchData = async () => {
+    const postData = async (newComment) => {
+        setLoading(true)
+        try {
+            const res = await fetch ('https://striveschool-api.herokuapp.com/api/comments/', {
+                method: 'POST',
+                body: JSON.stringify({...newComment, elementId: asin}),
+                headers: {
+                    'Content-type': 'application/json',
+                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTc0ZDRmYjJjNmEwZDAwMTg0OTYxNjYiLCJpYXQiOjE3MDQ5MTQ2ODEsImV4cCI6MTcwNjEyNDI4MX0.-Oddul8hPzc9Q5BxNBUmPmrINgYRSZi-CBRgItUfTrE',
+                },
+            })
+            if (res.ok) {
+                console.log('ok');
+                fetchData()
+            } else {
+                console.log('error')
+                setLoading(false)
+                setError(true)
+            }
+        } catch (error) {
+            console.log(error)
+            setLoading(false)
+            setError(true)
+        }
+    }
+
+    const deleteComment = async (commentId) => {
+        setLoading(true)
+        try {
+            const res = await fetch ('https://striveschool-api.herokuapp.com/api/comments/' + commentId, {
+                method: 'DELETE',
+                headers: {
+                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTc0ZDRmYjJjNmEwZDAwMTg0OTYxNjYiLCJpYXQiOjE3MDQ5MTQ2ODEsImV4cCI6MTcwNjEyNDI4MX0.-Oddul8hPzc9Q5BxNBUmPmrINgYRSZi-CBRgItUfTrE',
+                },
+            })
+            if (res.ok) {
+                console.log('ok');
+                fetchData()
+            } else {
+                console.log('error')
+                setLoading(false)
+                setError(true)
+            }
+        } catch (error) {
+            console.log(error)
+            setLoading(false)
+            setError(true)
+        }
+    }
+
+    const fetchData = async () => {
+            setLoading(true)
+            setError(false)
             try {
-                setLoading(true)
                 const res = await fetch ('https://striveschool-api.herokuapp.com/api/books/' + asin + '/comments', {
                     headers: {
                         Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTc0ZDRmYjJjNmEwZDAwMTg0OTYxNjYiLCJpYXQiOjE3MDQ5MTQ2ODEsImV4cCI6MTcwNjEyNDI4MX0.-Oddul8hPzc9Q5BxNBUmPmrINgYRSZi-CBRgItUfTrE',
@@ -42,11 +93,17 @@ const CommentSection = ({asin}) => {
         <div style={style}  className="rounded mx-auto">
             <h3>Commenti</h3>
             {isLoading && <SpinnerWait />}
-            {/* {isError && <ErrorAlert />} */}
+            {isError && <ErrorAlert />}
             {comments?.length > 0 
-                ? comments.map((comment, index) => <SingleComment comment={comment} key={index}/>) 
+                ? comments.map((comment, index) => <SingleComment 
+                                            deleteComment={deleteComment}
+                                            comment={comment} 
+                                            key={index}
+                                            />) 
                 : <p>Non ci sono commenti</p>}
-                <NewBookRate asin={asin}/>
+                <NewBookRate 
+                        postData={postData}
+                        />
         </div>
     )
 }
