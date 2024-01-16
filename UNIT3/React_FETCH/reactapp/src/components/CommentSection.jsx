@@ -60,6 +60,7 @@ const CommentSection = ({asin}) => {
         }
     }
 
+    // FETCH STYLE
     const fetchData = async () => {
             setLoading(true)
             setError(false)
@@ -85,9 +86,28 @@ const CommentSection = ({asin}) => {
             }
         }
 
+        // AXIOS STYLE
+        // axios.get('https://striveschool-api.herokuapp.com/api/books/' + asin + '/comments', {
+        //     headers: {
+        //         Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTc0ZDRmYjJjNmEwZDAwMTg0OTYxNjYiLCJpYXQiOjE3MDQ5MTQ2ODEsImV4cCI6MTcwNjEyNDI4MX0.-Oddul8hPzc9Q5BxNBUmPmrINgYRSZi-CBRgItUfTrE',
+        //     },
+        // })
+        // .then(res => {
+        //     res.json()
+        // })
+        // .then(setComments(data))
+        // .catch(err => console.log(err))
+        // .finally(setLoading(false))
+
+
     useEffect(() => {
         fetchData()
+        
     }, [])
+
+    useEffect(() => {
+        fetchData()
+    }, [counter, asin])
 
 
     return (
